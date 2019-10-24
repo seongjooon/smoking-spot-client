@@ -1,52 +1,52 @@
 import React, { Component } from 'react';
-// import firebase from 'firebase';
-// import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
+import firebase from 'firebase';
+import StyledFirebaseAuth from 'react-firebaseui/StyledFirebaseAuth';
 import { Switch, Route, Link, Redirect } from 'react-router-dom';
 
 import './App.scss';
 import Map from './Map';
 import New from './New';
 import Detail from './Detail';
-// import login from '../api/login';
+import login from '../api/login';
 
-// firebase.initializeApp({
-//   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
-//   authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN
-// });
+firebase.initializeApp({
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN
+});
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { isSignedIn: false };
-  //   this.uiConfig = {
-  //     signInFlow: 'redirect',
-  //     signInOptions: [
-  //       firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-  //       firebase.auth.FacebookAuthProvider.PROVIDER_ID,
-  //       firebase.auth.GithubAuthProvider.PROVIDER_ID
-  //     ],
-  //     callbacks: {
-  //       signInSuccess: () => false
-  //     }
-  //   };
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { isSignedIn: false };
+    this.uiConfig = {
+      signInFlow: 'redirect',
+      signInOptions: [
+        firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.GithubAuthProvider.PROVIDER_ID
+      ],
+      callbacks: {
+        signInSuccess: () => false
+      }
+    };
+  }
 
-  // componentDidMount = () => {
-  //   firebase.auth().onAuthStateChanged(async user => {
-  //     this.setState({ isSignedIn: !!user });
-  //     try {
-  //       const userToken = await login(user);
-  //       console.log(userToken);
-  //     } catch (err) {
-  //       console.log(err);
-  //     }
-  //   });
-  // };
+  componentDidMount = () => {
+    firebase.auth().onAuthStateChanged(async user => {
+      this.setState({ isSignedIn: !!user });
+      try {
+        const userToken = await login(user);
+        console.log(userToken);
+      } catch (err) {
+        console.log(err);
+      }
+    });
+  };
 
   render() {
     const {
-      // uiConfig,
-      // state: { isSignedIn },
+      uiConfig,
+      state: { isSignedIn },
       props: {
         createSpot,
         getSpotList,
@@ -96,31 +96,31 @@ class App extends Component {
             <div className='logo-smoking'>SMOKING</div>
             <div className='logo-spot'>SPOT</div>
           </div>
-          {/* {isSignedIn ? ( */}
-          <div>
-            <div className='home'>
-              <div className='home-buttons'>
-                <Link to='/spots/map' className='route map-button'>
-                  Map
-                </Link>
-                <Link to='/spots/new' className='route new-button'>
-                  New
-                </Link>
-                {/* <button
+          {isSignedIn ? (
+            <div>
+              <div className='home'>
+                <div className='home-buttons'>
+                  <Link to='/spots/map' className='route map-button'>
+                    Map
+                  </Link>
+                  <Link to='/spots/new' className='route new-button'>
+                    New
+                  </Link>
+                  <button
                     className='route signout-button'
                     onClick={() => firebase.auth().signOut()}
                   >
                     Sign out!
-                  </button> */}
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          {/* ) : (
+          ) : (
             <StyledFirebaseAuth
               uiConfig={uiConfig}
               firebaseAuth={firebase.auth()}
             />
-          )} */}
+          )}
         </Route>
       </Switch>
     );
