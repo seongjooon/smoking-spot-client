@@ -1,0 +1,36 @@
+.search-bar {
+  position: relative;
+  padding: 30px 0 20px;
+  .search-button-icon {
+    width: 30px;
+    padding-right: 15px;
+  }
+}
+.gm-style img {
+  max-width: 200px;
+}
+a:-webkit-any-link {
+  text-decoration: none;
+  color: black;
+  .spot-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+  }
+  .spot-address {
+    font-weight: bold;
+    color: darkgray;
+  }
+}
+.autocomplete-dropdown-container {
+  position: absolute;
+  z-index: 9999;
+}
+.location-search-input {
+  width: 300px;
+  height: 40px;
+  line-height: 50px;
+  border: 1px solid lightgrey;
+  text-decoration: none;
+  font-size: 1rem;
+  border-radius: 5px;
+}

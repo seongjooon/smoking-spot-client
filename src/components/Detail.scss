@@ -1,0 +1,76 @@
+.spot-detail {
+  text-align: initial;
+  .image-N-creator {
+    position: relative;
+    .spot-detail-image {
+      width: 100%;
+    }
+    .spot-detail-creator {
+      position: absolute;
+      right: 0;
+      bottom: 1%;
+      padding: 3px 5px;
+      font-size: 0.9rem;
+      color: lightgrey;
+      background-color: black;
+    }
+  }
+  .description-box {
+    position: relative;
+    padding: 20px;
+    border-bottom: 1px solid;
+    .spot-detail-title {
+      display: inline-block;
+      padding-bottom: 10px;
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+    .spot-detail-rate {
+      position: absolute;
+      right: 20%;
+      display: inline-block;
+    }
+  }
+  .spot-detail-address {
+    font-weight: bold;
+  }
+  .user-input-box {
+    max-width: 100%;
+    padding: 10px 0;
+    border-bottom: 1px solid;
+    .right-input-box {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 10px;
+      width: 80%;
+      .text-input {
+        display: block;
+        padding: 5px 10px;
+        width: 90%;
+        border: 1px solid lightgrey;
+        border-radius: 4px;
+      }
+      .rate-input {
+        display: block;
+      }
+    }
+    .user-submit {
+      display: inline-block;
+      width: 15%;
+      height: 100%;
+      padding: 10px;
+      border: 0;
+      border-radius: 4px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background-color: rgb(80, 170, 121);
+    }
+    .false {
+      background-color: darkgrey;
+    }
+  }
+  .icon {
+    width: 20px;
+  }
+}

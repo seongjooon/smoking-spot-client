@@ -1,0 +1,113 @@
+html,
+body,
+#root {
+  width: 375px;
+  max-height: 812px;
+  text-align: center;
+  .main-logo {
+    width: 100%;
+    padding: 200px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    div {
+      display: inline-block;
+      font-weight: bold;
+    }
+    .logo-smoking {
+      font-size: 3.5rem;
+      color: white;
+    }
+    .logo-spot {
+      margin: 18px 0;
+      padding: 3px 15px;
+      border-radius: 3px;
+      font-size: 1.2rem;
+      color: white;
+      background: red;
+    }
+  }
+  .sub-logo {
+    display: flex;
+    width: 100%;
+    padding: 30px 0 10px;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    background-color: black;
+    div {
+      display: inline-block;
+      font-weight: bold;
+    }
+    .sub-logo-smoking {
+      font-size: 2.5rem;
+      color: white;
+    }
+    .sub-logo-spot {
+      margin: 18px 0;
+      padding: 3px 10px;
+      border-radius: 3px;
+      font-size: 0.8rem;
+      color: white;
+      background: red;
+    }
+  }
+  .home {
+    .home-buttons {
+      width: 100%;
+      .route {
+        cursor: pointer;
+        display: inline-block;
+        margin: 15px 0;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-decoration: none;
+        font-size: 1.1rem;
+        font-weight: bold;
+        border-radius: 5px;
+        background: lightgrey;
+      }
+      .map-button {
+        color: forestgreen;
+      }
+      .new-button {
+        color: dodgerblue;
+      }
+      .signout-button {
+        padding: 0;
+        border: 0;
+        color: red;
+      }
+    }
+  }
+  .header-box {
+    position: relative;
+    .new-page-button {
+      position: absolute;
+      left: 0;
+      .new-button-icon {
+        padding: 45px 0 0 20px;
+        width: 30px;
+      }
+    }
+    .search-button {
+      position: absolute;
+      top: 45px;
+      right: 5%;
+      .search-button-icon {
+        width: 30px;
+      }
+    }
+  }
+  .firebaseui-idp-button {
+    margin: 15px 0;
+    max-width: 250px;
+    min-height: 50px;
+    border-radius: 5px;
+  }
+  .firebaseui-idp-list > .firebaseui-list-item {
+    margin: 0;
+  }
+}

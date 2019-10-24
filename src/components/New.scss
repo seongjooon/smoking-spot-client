@@ -1,0 +1,68 @@
+.new-formbox {
+  text-align: center;
+  .new-header-box {
+    position: relative;
+    width: 100%;
+    height: 30px;
+    padding-bottom: 4px;
+    .new-text {
+      position: absolute;
+      left: 4%;
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: dodgerblue;
+    }
+    .photo-plus-box {
+      position: absolute;
+      right: 1.5%;
+      height: 20px;
+      padding: 10px 0;
+      .photo-description {
+        display: none;
+      }
+      .photo-plus-button {
+        padding: 5px 10px;
+        border-radius: 4px;
+        color: white;
+        background-color: darkgray;
+      }
+    }
+  }
+  .input-text-group {
+    width: 100%;
+    .previe-image {
+      margin: 15px 0;
+      .new-img {
+        display: inline-block;
+        width: 100%;
+      }
+      .new-img-false {
+        display: inline-block;
+        width: 365px;
+        height: 365px;
+        color: lightgrey;
+        background: lightgrey;
+      }
+    }
+    .group {
+      display: inline-block;
+      margin: 15px 0;
+      width: 350px;
+      height: 40px;
+      line-height: 50px;
+      padding: 1px 10px;
+      border: 1px solid lightgrey;
+      text-decoration: none;
+      font-size: 1rem;
+      border-radius: 5px;
+    }
+    .submit-box {
+      bottom: 0;
+      border: 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: white;
+      background: rgb(80, 170, 121);
+    }
+  }
+}
