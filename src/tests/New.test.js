@@ -21,13 +21,32 @@ describe('<New />', () => {
 
     expect(photoButton.contains('+photo')).toBe(true);
     expect(wrapper.contains(<div className='new-text'>New</div>)).toBe(true);
+    expect(
+      wrapper.contains(<div className='sub-logo-smoking'>SMOKING</div>)
+    ).toBe(true);
+    expect(wrapper.contains(<div className='sub-logo-spot'>SPOT</div>)).toBe(
+      true
+    );
   });
 
   // it('renders changed states on input-text typing', () => {
-  //   const titleInput = wrapper.find('.input-title');
+  //   const onSubmit = jest.fn();
+  //   wrapper = shallow(<New onSubmit={onSubmit} />);
+  //   let titleInput = wrapper.find('input[name="title"]');
+  //   const submitButton = wrapper.find('input[name="submit"]');
 
-  //   titleInput.simulate('change', { target: { value: 'Title-test' } });
-  //   console.log(useStateSpy.mockImplementation(init => [init, setState]));
-  //   expect(setState).toHaveBeenCalledWith('Title-test');
+  //   titleInput.simulate('change', {
+  //     target: {
+  //       value: 'Title-test'
+  //     }
+  //   });
+
+  //   submitButton.simulate('click');
+  //   titleInput = {
+  //     target: {
+  //       value: 'Title-test'
+  //     }
+  //   };
+  //   expect(onSubmit).toHaveBeenCalledWith(titleInput);
   // });
 });

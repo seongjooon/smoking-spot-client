@@ -147,7 +147,7 @@ const New = ({ onSubmit, failMessage }) => {
             onChange={ev => setDetailAddress(ev.target.value)}
             placeholder='detail-address'
           />
-          <input className='submit-box group' type='submit' value='Submit' />
+          <input className='submit-box group' name='submit' type='submit' value='Submit' />
         </div>
       </form>
     </>

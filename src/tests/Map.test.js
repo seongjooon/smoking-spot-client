@@ -2,6 +2,8 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import Map from '../components/Map';
 
+export const spotList = ['seoul', 'deagu', 'busan', 'deajeon'];
+
 describe('<Map />', () => {
   let wrapper;
   const setState = jest.fn();
@@ -10,7 +12,6 @@ describe('<Map />', () => {
 
   beforeEach(() => {
     const getSpotList = jest.fn();
-    const spotList = ['seoul', 'deagu', 'busan', 'deajeon'];
     wrapper = shallow(<Map getSpotList={getSpotList} spotList={spotList} />);
   });
 
