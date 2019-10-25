@@ -20,7 +20,7 @@ const Detail = ({
   comentList
 }) => {
   const [rate, setRate] = useState(0);
-  const [commentText, setCommentText] = useState('');
+  const [comentText, setComentText] = useState('');
 
   useEffect(() => {
     getSpotDetail(params.id);
@@ -34,7 +34,7 @@ const Detail = ({
       spot_id: params.id,
       created_by: decodedToken.email,
       created_at: new Date(),
-      comment_text: commentText,
+      coment_text: comentText,
       rate
     });
   };
@@ -107,7 +107,7 @@ const Detail = ({
                 className='text-input'
                 type='text'
                 placeholder='댓글을 남겨주세요..'
-                onChange={ev => setCommentText(ev.target.value)}
+                onChange={ev => setComentText(ev.target.value)}
               />
               <Rating
                 className='rate-box rate-input'
@@ -129,18 +129,18 @@ const Detail = ({
               />
             </div>
             <input
-              className={`user-submit ${!!commentText}`}
+              className={`user-submit ${!!comentText}`}
               type='submit'
               value='등록'
-              disabled={!commentText}
+              disabled={!comentText}
             />
           </form>
           {comentList && (
-            <div className='comment-list-box'>
+            <div className='coment-list-box'>
               {comentList.map((coment, index) => (
                 <div className='coment-box' key={index}>
                   <div className='create-by'>{coment.created_by}</div>
-                  <div className='coment-text'>{coment.comment_text}</div>
+                  <div className='coment-text'>{coment.coment_text}</div>
                   <div className='created-at'>
                     {coment.created_at.slice(0, 10)}
                   </div>
