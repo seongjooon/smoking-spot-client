@@ -98,7 +98,6 @@ const Map = ({ getSpotList, spotList }) => {
 
   return (
     <>
-      {console.log('spotList', spotList)}
       {searchBar ? (
         <div className='search-bar'>
           <img
@@ -128,17 +127,15 @@ const Map = ({ getSpotList, spotList }) => {
                 <div className='autocomplete-dropdown-container'>
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
-                    const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style
+                          className: suggestion.active
+                            ? 'suggestion-item--active'
+                            : 'suggestion-item',
+                          style: suggestion.active
+                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                            : { backgroundColor: '#ffffff', cursor: 'pointer' }
                         })}
                       >
                         <span>{suggestion.description}</span>
