@@ -94,7 +94,7 @@ const New = ({ onSubmit, failMessage }) => {
             )}
           </div>
           <input
-            className='group'
+            className='input-title group'
             type='text'
             name='title'
             onChange={ev => setTitle(ev.target.value)}
@@ -121,17 +121,15 @@ const New = ({ onSubmit, failMessage }) => {
                 <div className='autocomplete-dropdown-container'>
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
-                    const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
-                    const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {
-                          className,
-                          style
+                          className: suggestion.active
+                            ? 'suggestion-item--active'
+                            : 'suggestion-item',
+                          style: suggestion.active
+                            ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                            : { backgroundColor: '#ffffff', cursor: 'pointer' }
                         })}
                       >
                         <span>{suggestion.description}</span>
