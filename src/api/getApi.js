@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getSpotListApi = () => {
   return axios
-    .get('/spots/map')
+    .get('/spots')
     .then(res => res.data)
     .catch(err => console.log(err));
 };
