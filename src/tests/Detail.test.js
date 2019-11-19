@@ -22,6 +22,10 @@ describe('<Detail />', () => {
     jest.clearAllMocks();
   });
 
+  it('matches snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders without crashing', () => {
     const logoText = wrapper.find('.sub-logo-smoking');
     const logoSubText = wrapper.find('.sub-logo-spot');

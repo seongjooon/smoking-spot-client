@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<New /> matches snapshot 1`] = `
+<Fragment>
+  <Link
+    className="sub-logo"
+    to="/home"
+  >
+    <div
+      className="sub-logo-smoking"
+    >
+      SMOKING
+    </div>
+    <div
+      className="sub-logo-spot"
+    >
+      SPOT
+    </div>
+  </Link>
+  <form
+    className="new-formbox"
+    encType="multipart/form-data"
+    onSubmit={[Function]}
+  >
+    <div
+      className="new-header-box"
+    >
+      <div
+        className="new-text"
+      >
+        New
+      </div>
+      <div
+        className="photo-plus-box"
+      >
+        <input
+          className="photo-description"
+          id="form-file"
+          name="file"
+          onChange={[Function]}
+          type="file"
+        />
+        <label
+          className="photo-plus-button"
+          htmlFor="form-file"
+        >
+          +photo
+        </label>
+      </div>
+    </div>
+    <div
+      className="input-text-group"
+    >
+      <div
+        className="previe-image"
+      >
+        <div
+          className="new-img-false"
+        />
+      </div>
+      <input
+        className="input-title group"
+        name="title"
+        onChange={[Function]}
+        placeholder="title"
+        type="text"
+      />
+      <PlacesAutocomplete
+        debounce={200}
+        highlightFirstSuggestion={false}
+        onChange={[Function]}
+        onError={[Function]}
+        onSelect={[Function]}
+        searchOptions={Object {}}
+        shouldFetchSuggestions={true}
+        value=""
+      >
+        <Component />
+      </PlacesAutocomplete>
+      <input
+        className="group"
+        name="detail-address"
+        onChange={[Function]}
+        placeholder="detail-address"
+        type="text"
+      />
+      <input
+        className="submit-box group"
+        name="submit"
+        type="submit"
+        value="Submit"
+      />
+    </div>
+  </form>
+</Fragment>
+`;

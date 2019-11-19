@@ -16,6 +16,10 @@ describe('<New />', () => {
     jest.clearAllMocks();
   });
 
+  it('matches snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders without crashing', () => {
     const photoButton = wrapper.find('.photo-plus-button');
 

@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Map /> matches snapshot 1`] = `
+<Fragment>
+  <div
+    className="header-box"
+  >
+    <Link
+      className="new-page-button"
+      to="/spots/new"
+    >
+      <img
+        alt="new-button"
+        className="new-button-icon"
+        src="https://www.iconsdb.com/icons/preview/white/plus-5-xxl.png"
+      />
+    </Link>
+    <Link
+      className="sub-logo"
+      to="/home"
+    >
+      <div
+        className="sub-logo-smoking"
+      >
+        SMOKING
+      </div>
+      <div
+        className="sub-logo-spot"
+      >
+        SPOT
+      </div>
+    </Link>
+    <button
+      className="search-button"
+      onClick={[Function]}
+    >
+      <img
+        alt="search box"
+        className="search-button-icon"
+        src="https://www.iconsdb.com/icons/preview/white/search-12-xxl.png"
+      />
+    </button>
+  </div>
+  <div
+    className="map-box"
+  >
+    <withGoogleMap(Component)
+      containerElement={
+        <div
+          style={
+            Object {
+              "height": "715px",
+              "width": "375px",
+            }
+          }
+        />
+      }
+      mapElement={
+        <div
+          style={
+            Object {
+              "height": "100%",
+            }
+          }
+        />
+      }
+    />
+  </div>
+</Fragment>
+`;

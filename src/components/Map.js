@@ -12,6 +12,8 @@ import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from 'react-places-autocomplete';
+import SearchIcon from './search-icon.png';
+import PlusIcon from './plus-icon.png';
 
 const Map = ({ getSpotList, spotList }) => {
   const [location, setLocation] = useState({});
@@ -51,20 +53,20 @@ const Map = ({ getSpotList, spotList }) => {
             >
               {isOpen && (
                 <InfoWindow
-                  className='info-window'
+                  className="info-window"
                   onCloseClick={() => setIsOpen(false)}
                 >
                   <Link
                     to={`/spots/${spot._id}`}
-                    className='spot-description-box'
+                    className="spot-description-box"
                   >
                     <img
-                      className='spot-image'
+                      className="spot-image"
                       src={spot.photo_url}
                       alt={spot.title}
                     />
-                    <div className='spot-title'>{spot.title}</div>
-                    <div className='spot-address'>{spot.address}</div>
+                    <div className="spot-title">{spot.title}</div>
+                    <div className="spot-address">{spot.address}</div>
                   </Link>
                 </InfoWindow>
               )}
@@ -99,11 +101,11 @@ const Map = ({ getSpotList, spotList }) => {
   return (
     <>
       {searchBar ? (
-        <div className='search-bar'>
+        <div className="search-bar">
           <img
-            className='search-button-icon'
-            alt='search bar'
-            src='https://www.iconsdb.com/icons/preview/white/search-12-xxl.png'
+            className="search-button-icon"
+            alt="search bar"
+            src={SearchIcon}
             onClick={() => _handleClick(false)}
           />
           <PlacesAutocomplete
@@ -124,7 +126,7 @@ const Map = ({ getSpotList, spotList }) => {
                     className: 'location-search-input'
                   })}
                 />
-                <div className='autocomplete-dropdown-container'>
+                <div className="autocomplete-dropdown-container">
                   {loading && <div>Loading...</div>}
                   {suggestions.map(suggestion => {
                     return (
@@ -148,28 +150,24 @@ const Map = ({ getSpotList, spotList }) => {
           </PlacesAutocomplete>
         </div>
       ) : (
-        <div className='header-box'>
-          <Link to='/spots/new' className='new-page-button'>
-            <img
-              className='new-button-icon'
-              alt='new-button'
-              src='https://www.iconsdb.com/icons/preview/white/plus-5-xxl.png'
-            />
+        <div className="header-box">
+          <Link to="/spots/new" className="new-page-button">
+            <img className="new-button-icon" alt="new-button" src={PlusIcon} />
           </Link>
-          <Link to='/home' className='sub-logo'>
-            <div className='sub-logo-smoking'>SMOKING</div>
-            <div className='sub-logo-spot'>SPOT</div>
+          <Link to="/home" className="sub-logo">
+            <div className="sub-logo-smoking">SMOKING</div>
+            <div className="sub-logo-spot">SPOT</div>
           </Link>
-          <button className='search-button' onClick={() => _handleClick(true)}>
+          <button className="search-button" onClick={() => _handleClick(true)}>
             <img
-              className='search-button-icon'
-              alt='search box'
-              src='https://www.iconsdb.com/icons/preview/white/search-12-xxl.png'
+              className="search-button-icon"
+              alt="search box"
+              src={SearchIcon}
             />
           </button>
         </div>
       )}
-      <div className='map-box'>
+      <div className="map-box">
         <RenderMap
           containerElement={<div style={{ height: `715px`, width: '375px' }} />}
           mapElement={<div style={{ height: `100%` }} />}

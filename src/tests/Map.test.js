@@ -19,6 +19,10 @@ describe('<Map />', () => {
     jest.clearAllMocks();
   });
 
+  it('matches snapshot', () => {
+    expect(wrapper).toMatchSnapshot();
+  });
+
   it('renders changed header on buttons click', () => {
     const searchButton = wrapper.find('.search-button');
 

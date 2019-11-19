@@ -65,7 +65,7 @@ class App extends Component {
         <Route exact path='/' render={() => <Redirect to='/home' />} />
         <Route
           exact
-          path='/spots/map'
+          path='/spots'
           render={() => <Map spotList={spotList} getSpotList={getSpotList} />}
         />
         <Route
@@ -100,7 +100,7 @@ class App extends Component {
             <div>
               <div className='home'>
                 <div className='home-buttons'>
-                  <Link to='/spots/map' className='route map-button'>
+                  <Link to='/spots' className='route map-button'>
                     Map
                   </Link>
                   <Link to='/spots/new' className='route new-button'>

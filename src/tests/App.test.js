@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { Route, Redirect } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import App from '../components/App';
 import Map from '../components/Map';
 
