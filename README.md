@@ -6,7 +6,8 @@
 
 - [Introduction](#Introduction)
 - [Installation](#Installation)
-- [Additional requirement](#Additional-requirement)
+- [Requirement](#Requirement)
+- [Features](#Features)
 - [Usage](#Usage)
 - [Tech](#Usage)
 - [Chellenges](#Chellenges)
@@ -42,7 +43,7 @@ yarn install
 yarn start
 ```
 
->### Additional requirement
+>### Requirement
 - Set client envirionment
 
 ```
@@ -64,6 +65,10 @@ CLIENT_URL=http://localhost:3000
 AWS_ACCESS_KEY_ID="Input your aws access key.."
 AWS_SECRET_ACCESS_KEY="Input your aws secret access key.."
 ```
+
+>### Features
+
+
 
 >### Usage
 
