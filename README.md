@@ -10,7 +10,7 @@
 - [Features](#Features)
 - [Usage](#Usage)
 - [Tech](#Usage)
-- [Chellenges](#Chellenges)
+- [Challenges](#Challenges)
 - [Things to do](#Things-to-do)
 - [Version Control](#Version-Control)
 - [Other tools](#Other-tools)
@@ -94,9 +94,11 @@ AWS_SECRET_ACCESS_KEY="Input your aws secret access key.."
 
 > ### Challenges
 
-- **React(Lifecycle) 활용의 어려움**
+- **React(Lifecyle, Hooks)활용의 어려움**
 
-  : Google Maps API의 Vanilla Javascript Guid를 React Lifecyle에 맞게 변형 또는 접목시키는 부분이 어려웠다. 기초적인 Javascript와 React에 대한 이해가 더 필요하다고 생각해서 문서나 참고할 만한 블로그들을 보며 직접 예제들을 만들어서 해결했다.
+  : Google Maps API의 Vanilla Javascript Guid를 React Lifecyle에 맞게 변형 또는 접목시키는 부분이 어려웠다. 기초적인 Javascript와 React에 대한 이해가 더 필요하다고 생각해서 문서나 참고할 만한 블로그들을 보며 직접 예제들을 참고하고 라이브러리(react-google-maps)를 활용해서 해결했다.
+
+  : Hooks를 사용하면서 새로운 기술에 대한 적응이 쉽지 않았지만 기존의 개념을 상기하며 사용했다. Hooks의 모든 기능들을 사용한 것은 아니었지만 새로운 기술에 대한 두려움을 떨쳐낼 수 있었다.
 
 - **Google Maps API**
 
