@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Map as GoogleMap, AdvancedMarker, InfoWindow } from '@vis.gl/react-google-maps';
+import { Map as GoogleMap, InfoWindow } from '@vis.gl/react-google-maps';
 
 import './Map.scss';
 import SearchIcon from './search-icon.png';
 import PlusIcon from './plus-icon.png';
 import PlaceSearch from './PlaceSearch';
+import ClusteredMarkers from './ClusteredMarkers';
 import { fetchSpotList } from '../store';
 
 const SEOUL = { lat: 37.5665, lng: 126.978 };
@@ -65,16 +66,7 @@ const Map = () => {
           gestureHandling='greedy'
           disableDefaultUI
         >
-          {spotList.map(spot => (
-            <AdvancedMarker
-              key={spot._id}
-              position={{
-                lng: spot.location.coordinates[0],
-                lat: spot.location.coordinates[1]
-              }}
-              onClick={() => setSelectedId(spot._id)}
-            />
-          ))}
+          <ClusteredMarkers spots={spotList} onSelect={setSelectedId} />
           {selected && (
             <InfoWindow
               position={{
