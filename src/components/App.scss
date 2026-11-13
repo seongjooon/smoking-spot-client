@@ -95,6 +95,10 @@ body,
       }
     }
     .search-button {
+      padding: 0;
+      border: 0;
+      background: none;
+      cursor: pointer;
       position: absolute;
       top: 45px;
       right: 5%;
