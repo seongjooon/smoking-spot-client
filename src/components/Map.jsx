@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { Map as GoogleMap, InfoWindow } from '@vis.gl/react-google-maps';
+import {
+  Map as GoogleMap,
+  InfoWindow,
+  useApiLoadingStatus,
+  APILoadingStatus
+} from '@vis.gl/react-google-maps';
 
 import './Map.scss';
 import SearchIcon from './search-icon.png';
@@ -13,7 +18,18 @@ import { fetchSpotList } from '../store';
 const SEOUL = { lat: 37.5665, lng: 126.978 };
 const MAP_ID = import.meta.env.VITE_GOOGLE_MAP_ID || 'DEMO_MAP_ID';
 
+export const mapErrorMessage = status => {
+  if (status === APILoadingStatus.AUTH_FAILURE) {
+    return '지도 API 키 인증에 실패했습니다. 키 값, 사용 설정한 API(Maps JavaScript, Places API (New)), 도메인 제한을 확인해주세요.';
+  }
+  if (status === APILoadingStatus.FAILED) {
+    return '지도를 불러오지 못했습니다. 네트워크 상태를 확인하고 새로고침해주세요.';
+  }
+  return '';
+};
+
 const Map = () => {
+  const mapError = mapErrorMessage(useApiLoadingStatus());
   const dispatch = useDispatch();
   const { spotList, error } = useSelector(s => s);
   const [center, setCenter] = useState(SEOUL);
@@ -57,6 +73,11 @@ const Map = () => {
         </div>
       )}
       {error && <div className='error-text'>{error}</div>}
+      {mapError && (
+        <div className='error-text map-error' role='alert'>
+          {mapError}
+        </div>
+      )}
       <div className='map-box'>
         <GoogleMap
           mapId={MAP_ID}

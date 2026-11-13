@@ -13,3 +13,14 @@ describe('rating', () => {
     expect(screen.getByLabelText('평점 3').textContent).toBe('★★★☆☆');
   });
 });
+
+import { mapErrorMessage } from '../components/Map';
+
+describe('map load failure message', () => {
+  it('explains auth and load failures, silent otherwise', () => {
+    expect(mapErrorMessage('AUTH_FAILURE')).toMatch(/API 키/);
+    expect(mapErrorMessage('FAILED')).toMatch(/불러오지 못했습니다/);
+    expect(mapErrorMessage('LOADED')).toBe('');
+    expect(mapErrorMessage('LOADING')).toBe('');
+  });
+});
