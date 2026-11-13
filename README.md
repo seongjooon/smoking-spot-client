@@ -1,125 +1,60 @@
 # Smoking Spot
 
-![main-logo](main-logo.png)
+주변의 흡연구역을 찾아 등록하고, 평점·댓글로 평판을 확인하는 위치기반 모바일 웹앱.
+React + Vite 클라이언트 / Express + MongoDB 서버 ([smoking-spot-server](https://github.com/seongjooon/smoking-spot-server)), 둘 다 Vercel 에 배포합니다.
 
-> ## Contents
+## 구조
+- 로그인: Firebase Google 로그인 → 클라이언트가 Firebase ID 토큰을 `Authorization: Bearer` 로 전송 → 서버가 검증
+- 지도/장소 검색: Google Maps JavaScript API + Places API (New)
+- 이미지: 브라우저 → Vercel Blob 직접 업로드 (서버는 인증 후 업로드 토큰만 발급)
 
-- [Introduction](#Introduction)
-- [Installation](#Installation)
-- [Requirement](#Requirement)
-- [Features](#Features)
-- [Usage](#Usage)
-- [Tech](#Usage)
-- [Challenges](#Challenges)
-- [Things to do](#Things-to-do)
-- [Version Control](#Version-Control)
-- [Other tools](#Other-tools)
+## 배포 순서
 
-> ### Introduction
+### 1. MongoDB Atlas
+무료 클러스터 생성 → Database User 생성 → Network Access 에 `0.0.0.0/0` 허용(Vercel IP 가 고정이 아님) → 접속 URL 복사.
 
-비흡연자, 흡연자 모두가 쾌적할 수 있도록 주변의 Smoking Spot(흡연 구역)을 찾아주는 위치기반의 모바일 전용 웹 어플리케이션. 원하는 흡연구역의 주소를 검색하고 사진을 첨부하고 등록할 수 있다. 현재위치, 원하는 위치의 주변 흡연 구역을 찾을 수 있다. 흡연구역의 상세페이지에서는 평점과 댓글을 추가할 수 있으므로 사용하기 전에 검색을 통해서 구역의 평판을 확인할 수 있다.
+### 2. Firebase
+1. 프로젝트 생성 → Authentication → 로그인 방법에서 **Google** 활성화
+2. 프로젝트 설정 → 웹 앱 등록 → `apiKey`, `authDomain` 확인
+3. Authentication → 설정 → 승인된 도메인에 **클라이언트 배포 도메인** 추가
 
-> ### Installation
+### 3. Google Maps
+Google Cloud 에서 **Maps JavaScript API** 와 **Places API (New)** 를 사용 설정하고 API 키 생성(결제 계정 필요).
+키에 HTTP 리퍼러 제한(클라이언트 도메인, `localhost:5173`)을 반드시 걸어주세요.
 
-#### - Client
+### 4. Vercel — 서버
+`smoking-spot-server` 저장소를 Import. 환경변수:
 
-```
-git clone https://github.com/MrKamake/smoking-spot-client.git
-cd 1984-client
-yarn install
-yarn start
-```
+| 이름 | 값 |
+|---|---|
+| `DATABASE_URL` | Atlas 접속 URL |
+| `FIREBASE_PROJECT_ID` | Firebase 프로젝트 ID |
+| `CLIENT_URL` | 클라이언트 주소 (쉼표로 여러 개 가능) |
 
-#### - Server
+그리고 프로젝트의 **Storage → Create → Blob** 을 만들어 연결하면 `BLOB_READ_WRITE_TOKEN` 이 자동 주입됩니다.
+배포 후 `https://<서버>/health` 가 `{"ok":true}` 를 돌려주면 정상입니다.
 
-```
-git clone https://github.com/MrKamake/smoking-spot-server.git
-cd 1984-server
-yarn install
-yarn start
-```
+### 5. Vercel — 클라이언트
+이 저장소를 Import (Framework: Vite). 환경변수:
 
-> ### Requirement
+| 이름 | 값 |
+|---|---|
+| `VITE_API_URL` | 서버 배포 주소 (끝에 `/` 없이) |
+| `VITE_FIREBASE_API_KEY` | Firebase apiKey |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Firebase authDomain |
+| `VITE_GOOGLE_API_KEY` | Google Maps 키 |
+| `VITE_GOOGLE_MAP_ID` | (선택) Map ID |
 
-- Set client envirionment
+클라이언트 도메인이 확정되면 서버의 `CLIENT_URL` 과 Firebase 승인 도메인에 반영하고 서버를 재배포하세요.
 
-```
-.env
-REACT_APP_FIREBASE_API_KEY="Input your firebase api key.."
-REACT_APP_FIREBASE_AUTH_DOMAIN="Input your firebase auth domain key.."
-REACT_APP_GOOGLE_API_KEY="Input your google api key.."
-REACT_APP_SECRET_KEY="Input your secret key.."
-```
-
-- Set server envirionment
-
-```
-.env
-DATABASE_URL="Input your MongoDB cluster url.."
-SECRET_KEY="Input your secret key.."
-ONE_HOUR=3600000
-CLIENT_URL=http://localhost:3000
-AWS_ACCESS_KEY_ID="Input your aws access key.."
-AWS_SECRET_ACCESS_KEY="Input your aws secret access key.."
+## 로컬 개발
+```bash
+# 서버 (.env.example 참고해서 .env 작성)
+npm install && npm run dev        # http://localhost:5000
+# 클라이언트
+npm install && npm run dev        # http://localhost:5173
+npm test
 ```
 
-> ### Features
-
-- Firebase Authentication API를 활용한 소셜 로그인 및 JSON Web Token을 이용한 사용자 정보 보안강화
-- Google Maps API를 사용해 지도, 현재 위치, 장소 검색기능
-- AWS S3(Simple Storage Service)를 활용한 이미지 파일 업로드
-
-> ### Usage
-
-1. Social service을 통해 Sign in.
-2. New 버튼이나 (+) 버튼을 클릭해서 새로운 흡연구역 추가 가능.
-3. 사용자가 직접 찍은 사진 첨부, 구역의 별명, 주소검색, 상세 주소 추가.
-4. Map 버튼을 클릭해서 현재 위치에서 주변의 흡연구역 촥인.
-5. 등록된 흡연구역 클릭시, 작은 창에 간단한 정보 확인 가능.
-6. 작은 창 클릭해서 해당 구역의 상세 페이지의 평점, 댓글 확인 가능.
-7. 평점과 댓글 추가 가능.
-
-> ### Tech
-
-- Javascript (ES2015+)
-- React, for component based architecture
-- Routing using react-router
-- State management using redux
-- Node.js
-- Express
-- Mongo DB
-- Mongoose, object data modeling library for Mongo DB
-- Sass, for easy to understand stylesheet
-- Google Maps API
-
-> ### Challenges
-
-- **React(Lifecyle, Hooks)활용의 어려움**
-
-  : Google Maps API의 Vanilla Javascript Guid를 React Lifecyle에 맞게 변형 또는 접목시키는 부분이 어려웠다. 기초적인 Javascript와 React에 대한 이해가 더 필요하다고 생각해서 문서나 참고할 만한 블로그들을 보며 직접 예제들을 참고하고 라이브러리(react-google-maps)를 활용해서 해결했다.
-
-  : Hooks를 사용하면서 새로운 기술에 대한 적응이 쉽지 않았지만 기존의 개념을 상기하며 사용했다. Hooks의 모든 기능들을 사용한 것은 아니었지만 새로운 기술에 대한 두려움을 떨쳐낼 수 있었다.
-
-- **Google Maps API**
-
-  : React와 함께 사용하기 쉬운 라이브러리(react-google-maps)를 사용했다. 처음 써보는 라이브러리여서 적응이 쉽지 않았지만 가이드와 구글링을 통해 예제들을 참고하면서 하나씩 해결할 수 있었다.
-
-> ### Things to do
-
-- 마이페이지 생성
-- 평점 순으로 리스트업
-- 상세페이지 디테일한 css 작업
-- 내가 올린 장소의 상세 내용 및 댓글 수정 기능
-- End-To-End Test 추가
-
-> ### Version Control
-
-- git을 사용.
-- 새로운 브랜치를 생성하고 master 브랜치에 병합.
-
-> ### Other tools
-
-- Notion의 Status를 이용한 task 세분화 및 스케줄 관리
-- Lucidchart를 이용한 Schema design.
-- Oven을 이용한 Mockup design.
-- Redux devtools extention을 이용한 debugging.
+## 알려진 제한
+- 수정/삭제, 마이페이지, 평점순 정렬은 미구현

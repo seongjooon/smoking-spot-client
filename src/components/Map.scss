@@ -36,3 +36,46 @@ a:-webkit-any-link {
   font-size: 1rem;
   border-radius: 5px;
 }
+.map-box {
+  width: 100%;
+  height: calc(100vh - 140px);
+  min-height: 400px;
+}
+.autocomplete-dropdown-container {
+  background: #fff;
+  text-align: left;
+  .suggestion-item,
+  .suggestion-item--active {
+    padding: 8px 10px;
+    cursor: pointer;
+  }
+  .suggestion-item--active {
+    background: #fafafa;
+  }
+}
+.signin-button {
+  display: block;
+  margin: 0 auto;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 4px;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+.stars {
+  color: #f5b301;
+  letter-spacing: 2px;
+  button {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-size: 1.4rem;
+    color: inherit;
+    cursor: pointer;
+  }
+}
+.error-text {
+  padding: 10px;
+  color: red;
+}

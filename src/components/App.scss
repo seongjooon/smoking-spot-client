@@ -1,8 +1,10 @@
 html,
 body,
 #root {
-  width: 375px;
-  max-height: 812px;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  
   text-align: center;
   .main-logo {
     width: 100%;
