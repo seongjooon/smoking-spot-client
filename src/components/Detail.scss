@@ -74,3 +74,30 @@
     width: 20px;
   }
 }
+
+.coment-list-box {
+  text-align: left;
+  .coment-box {
+    position: relative;
+    padding: 12px 20px;
+    border-bottom: 1px solid #eee;
+    .create-by {
+      font-size: 0.85rem;
+      font-weight: bold;
+    }
+    .coment-text {
+      margin: 4px 0;
+      word-break: break-word;
+    }
+    .created-at {
+      font-size: 0.75rem;
+      color: darkgray;
+    }
+    .stars {
+      position: absolute;
+      top: 12px;
+      right: 20px;
+      font-size: 0.9rem;
+    }
+  }
+}
